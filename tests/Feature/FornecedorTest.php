@@ -9,6 +9,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class FornecedorTest extends TestCase
 {
+     use RefreshDatabase;
+
     public function test_criar_fornecedor_sucesso()
     {
         $response = $this->postJson('/api/fornecedores', [
@@ -36,7 +38,7 @@ class FornecedorTest extends TestCase
     {
         Fornecedor::factory()->create(['nome' => 'Empresa Teste']);
 
-        $response = $this->getJson('/api/fornecedores?nome=Teste');
+        $response = $this->getJson('/api/fornecedores?q=Teste');
 
         $response->assertStatus(200)
                 ->assertJsonFragment(['nome' => 'Empresa Teste']);
