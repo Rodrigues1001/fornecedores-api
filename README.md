@@ -34,16 +34,25 @@ API desenvolvida em Laravel para gerenciar fornecedores, como parte de um teste 
     php artisan serve
 
 
-Listar fornecedores (com filtro opcional por nome)
+#  Listar fornecedores (com filtro opcional por nome)
     GET /api/fornecedores?nome=Empresa
 
-Execute os testes de feature:
+#  Inserir fornecedores
+    POST /api/fornecedores
+    Utilizar json:
+    - {
+        "nome": "Nome Empresa",
+        "cnpj": "CNPJ VALIDO",
+        "email": "EMAIL VALIDO"
+    }
+
+#  InstalaçãoExecute os testes de feature:
     php artisan test
 
-Estrutura
-    app/Models/Fornecedor.php → Model com SoftDeletes
-    app/Http/Requests/FornecedorRequest.php → Validação e sanitização de CNPJ
-    app/Http/Controllers/FornecedorController.php → Endpoints REST
-    app/Services/FornecedorService.php → Regra de negócio + transações
-    app/Http/Resources/FornecedorResource.php → Formatação JSON
-    tests/Feature/FornecedorTest.php → Testes de integração
+# Estrutura
+    - app/Models/Fornecedor.php → Model com SoftDeletes
+    - app/Http/Requests/FornecedorRequest.php → Validação e sanitização de CNPJ
+    - app/Http/Controllers/FornecedorController.php → Endpoints REST
+    - app/Services/FornecedorService.php → Regra de negócio + transações
+    - app/Http/Resources/FornecedorResource.php → Formatação JSON
+    - tests/Feature/FornecedorTest.php → Testes de integração
